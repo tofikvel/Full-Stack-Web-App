@@ -2,14 +2,28 @@ const express = require('express');
 
 const app = express();
 
+app.set('view engine', 'ejs');
+
 app.listen(3000);
 
 app.get('/', (req, res) => {
-    res.sendFile('./views/index.html', { root: __dirname });
+    res.render('index');
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile('./views/about.html', { root: __dirname });
+    res.render('about');
+});
+
+app.get('/contact', (req, res) => {
+    res.render('contact');
+});
+
+app.get('/product', (req, res) => {
+    res.render('product');
+});
+
+app.get('/shop/cart', (req, res) => {
+    res.render('cart');
 });
 
 app.use((req, res) => {
