@@ -3,27 +3,31 @@
 <%- include('./partials/head.ejs')%>
 
     <body>
-
         <% const name='Mario' %>
             <%- include('./partials/navbar.ejs')%>
-                <h1>Home</h1>
-                <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio placeat voluptas voluptatum, porro et
-                    tempora
-                    incidunt doloribus blanditiis repellendus nisi!</h2>
+                <div class="wrapper">
+                    <div class="content">
+                        <h1>Home</h1>
+                        <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio placeat voluptas voluptatum,
+                            porro et
+                            tempora
+                            incidunt doloribus blanditiis repellendus nisi!</h2>
 
-                <% if(items.length> 0) {%>
-                    <% items.forEach(item=>{%>
-                        <h3>
-                            <%= item.title%>
-                        </h3>
-                        <p>
-                            <%= item.price%>
-                        </p>
-                        <%})%>
-                            <% } else { %>
-                                <p>No items found</p>
-                                <%} %>
-                                    <%- include('./partials/footer.ejs')%>
+                        <% if(items.length> 0) {%>
+                            <% items.forEach(item=>{%>
+                                <h3>
+                                    <%= item.title%>
+                                </h3>
+                                <p>
+                                    <%= item.price%>
+                                </p>
+                                <%})%>
+                                    <% } else { %>
+                                        <p>No items found</p>
+                                        <%} %>
+                    </div>
+                </div>
+                <%- include('./partials/footer.ejs')%>
     </body>
 
 </html>
