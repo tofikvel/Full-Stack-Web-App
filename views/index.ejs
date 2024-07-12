@@ -1,78 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+<%- include('./partials/head.ejs')%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Home Page | <%= title %>
-    </title>
+    <body>
 
-    <style>
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-family: 'Roboto', sans-serif;
-        }
+        <% const name='Mario' %>
+            <%- include('./partials/navbar.ejs')%>
+                <h1>Home</h1>
+                <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio placeat voluptas voluptatum, porro et
+                    tempora
+                    incidunt doloribus blanditiis repellendus nisi!</h2>
 
-        body {
-            background: #edf2f4;
-        }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 3.5rem;
-            padding: 0 1.5rem 0 1.5rem;
-            background: #041C32;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            margin-right: 1rem;
-            font-size: 26px;
-            color: white;
-        }
-    </style>
-</head>
-
-<body>
-
-    <% const name='Mario' %>
-
-        <nav class="navbar">
-            <div class="nav-left">
-                <a href="/" class="nav-link">Home</a>
-            </div>
-            <div class="nav-right">
-                <a href="/about" class="nav-link">About</a>
-                <a href="/contact" class="nav-link">Contact</a>
-                <a href="shop/cart" class="nav-link">Cart</a>
-            </div>
-        </nav>
-        <h1>Home</h1>
-        <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio placeat voluptas voluptatum, porro et tempora
-            incidunt doloribus blanditiis repellendus nisi!</h2>
-
-        <% if(items.length> 0) {%>
-            <% items.forEach(item=>{%>
-                <h3>
-                    <%= item.title%>
-                </h3>
-                <p>
-                    <%= item.price%>
-                </p>
-                <%})%>
-                    <% } else { %>
-                        <p>No items found</p>
-                        <%} %>
-
-</body>
+                <% if(items.length> 0) {%>
+                    <% items.forEach(item=>{%>
+                        <h3>
+                            <%= item.title%>
+                        </h3>
+                        <p>
+                            <%= item.price%>
+                        </p>
+                        <%})%>
+                            <% } else { %>
+                                <p>No items found</p>
+                                <%} %>
+                                    <%- include('./partials/footer.ejs')%>
+    </body>
 
 </html>

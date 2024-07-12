@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
         { title: 'Sprite', price: '$1.99', description: 'Refreshing carbonated drink' },
         { title: 'Fanta', price: '$2.99', description: 'Refreshing carbonated drink' }
     ];
-    res.render('index', { title: 'Shop', items: items });
+    res.render('index', { title: 'Main', items: items });
 });
 
 app.get('/about', (req, res) => {
@@ -28,7 +28,7 @@ app.get('/product', (req, res) => {
 });
 
 app.get('/shop/cart', (req, res) => {
-    res.render('cart', { title: 'Shopping cart' });
+    res.render('cart', { title: 'Cart' });
 });
 app.get('/comment', (req, res) => {
     res.render('comment', { title: 'Comment' });
