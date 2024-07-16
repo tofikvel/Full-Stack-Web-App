@@ -7,6 +7,8 @@ app.set('view engine', 'ejs');
 
 app.listen(3000);
 
+app.use(express.static('public'));
+
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
@@ -30,7 +32,7 @@ app.get('/product', (req, res) => {
     res.render('product', { title: 'Product' });
 });
 
-app.get('/shop/cart', (req, res) => {
+app.get('/cart', (req, res) => {
     res.render('cart', { title: 'Cart' });
 });
 app.get('/comment', (req, res) => {
