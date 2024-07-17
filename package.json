@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/mayware/Full-Stack-Web-App#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "lodash": "^4.17.21",
+    "mongoose": "^8.5.1",
     "morgan": "^1.10.0"
   }
 }

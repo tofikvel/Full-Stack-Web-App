@@ -1,9 +1,23 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
+require('dotenv').config()
 
 const app = express();
 
-const dbURI = 'mongodb+srv://tofigvaliyev1993:<AV3nZmKanlNRZd8L>@cluster0.arcflm1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+// const dbURI = 'mongodb+srv://tofigvaliyev1993:AV3nZmKanlNRZd8L@cluster0.arcflm1.mongodb.net/nodeProject?retryWrites=true&w=majority&appName=Cluster0';
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        // Listen for requests
+        app.listen(process.env.PORT, () => {
+            console.log("Connected to the db & listening on port:", process.env.PORT);
+        });
+    })
+    .catch((error) => {
+        console.log('Error connecting to MongoDB:', error);
+    });
+
 
 app.set('view engine', 'ejs');
 
