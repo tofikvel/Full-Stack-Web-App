@@ -1,7 +1,9 @@
+require('dotenv').config()
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-require('dotenv').config()
+const Cart = require('./models/cart');
+const Product = require('./models/product');
 
 const app = express();
 
@@ -9,31 +11,38 @@ const app = express();
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        // Listen for requests
-        app.listen(process.env.PORT, () => {
-            console.log("Connected to the db & listening on port:", process.env.PORT);
-        });
+        app.listen(process.env.PORT);
     })
     .catch((error) => {
-        console.log('Error connecting to MongoDB:', error);
+        console.log(error);
     });
 
-
+// register view engine
 app.set('view engine', 'ejs');
-
-app.listen(3000);
-
+// middleware & static files
 app.use(express.static('public'));
-
 app.use(morgan('dev'));
 
+app.get('/add-item', (req, res) => {
+    const item = new Cart({
+        title: 'Sprite',
+        price: '$1.49',
+        description: 'Refreshing carbonated drink',
+        weight: '0.35L',
+        image: 'sprite'
+    });
+
+    item.save()
+        .then((result) => {
+            res.send(result)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
 app.get('/', (req, res) => {
-    const items = [
-        { title: 'Coca-Cola', price: '$2.99', description: 'Refreshing carbonated drink' },
-        { title: 'Sprite', price: '$1.99', description: 'Refreshing carbonated drink' },
-        { title: 'Fanta', price: '$2.99', description: 'Refreshing carbonated drink' }
-    ];
-    res.render('index', { title: 'Main', items: items });
+    res.render('index', { title: 'Main' });
 });
 
 app.get('/about', (req, res) => {

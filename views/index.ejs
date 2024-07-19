@@ -12,19 +12,6 @@
                             porro et
                             tempora
                             incidunt doloribus blanditiis repellendus nisi!</h2>
-
-                        <% if(items.length> 0) {%>
-                            <% items.forEach(item=>{%>
-                                <h3>
-                                    <%= item.title%>
-                                </h3>
-                                <p>
-                                    <%= item.price%>
-                                </p>
-                                <%})%>
-                                    <% } else { %>
-                                        <p>No items found</p>
-                                        <%} %>
                     </div>
                 </div>
                 <%- include('./partials/footer.ejs')%>
