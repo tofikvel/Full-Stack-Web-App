@@ -7,11 +7,21 @@
             <%- include('./partials/navbar.ejs')%>
                 <div class="wrapper">
                     <div class="content">
-                        <h1>Home</h1>
-                        <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio placeat voluptas voluptatum,
-                            porro et
-                            tempora
-                            incidunt doloribus blanditiis repellendus nisi!</h2>
+                        <h1>All products</h1>
+                        <% if (products.length> 0) { %>
+                            <% products.forEach(product=> { %>
+
+                                <h3 class="title">
+                                    <%= product.title %>
+                                </h3>
+                                <p class="snippet">
+                                    <%= product.price %>
+                                </p>
+
+                                <% }) %>
+                                    <% } else { %>
+                                        <p>There are no products to display...</p>
+                                        <% } %>
                     </div>
                 </div>
                 <%- include('./partials/footer.ejs')%>
