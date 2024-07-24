@@ -7,8 +7,6 @@ const Product = require('./models/product');
 
 const app = express();
 
-// const dbURI = 'mongodb+srv://tofigvaliyev1993:AV3nZmKanlNRZd8L@cluster0.arcflm1.mongodb.net/nodeProject?retryWrites=true&w=majority&appName=Cluster0';
-
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         app.listen(process.env.PORT);
@@ -40,6 +38,35 @@ app.get('/add-item', (req, res) => {
             console.log(err)
         })
 })
+
+
+
+
+// route to get all products
+app.get('/all-products', (req, res) => {
+    Product.find()
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+})
+
+// route to get a single product
+app.get('/single-product', (req, res) => {
+    Product.findById('6699b95fe51c3dd2ea27bb2a')
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+})
+
+
+
+
 
 app.get('/', (req, res) => {
     res.render('index', { title: 'Main' });
