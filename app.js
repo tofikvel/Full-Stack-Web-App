@@ -20,16 +20,12 @@ app.set('view engine', 'ejs');
 
 // middleware & static files
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-
 
 
 // Routes
 app.get('/', (req, res) => {
-    res.redirect('/products');
-});
-
-app.get('/products', (req, res) => {
     Product.find().sort({ createdAt: -1 })
         .then((data) => {
             res.render('index', { title: 'All Products', products: data })
@@ -37,7 +33,20 @@ app.get('/products', (req, res) => {
         .catch((err) => {
             console.log(err);
         })
-})
+});
+
+app.post('/cart', (req, res) => {
+    const { title, price, description, weight, image } = req.body;
+    const CartItem = new Cart({ title, price, description, weight, image });
+
+    CartItem.save()
+        .then(result => {
+            res.redirect('/');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
 
 app.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
@@ -52,7 +61,13 @@ app.get('/product', (req, res) => {
 });
 
 app.get('/cart', (req, res) => {
-    res.render('cart', { title: 'Cart' });
+    Cart.find().sort({ createdAt: -1 })
+        .then((data) => {
+            res.render('cart', { title: 'Shopping Cart', items: data })
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 });
 
 app.get('/comment', (req, res) => {

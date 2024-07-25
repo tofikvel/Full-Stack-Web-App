@@ -6,10 +6,30 @@
     <body>
         <%- include('./partials/navbar.ejs')%>
             <h1>Shopping cart page</h1>
-            <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio placeat voluptas voluptatum, porro et
-                tempora
-                incidunt doloribus blanditiis repellendus nisi!</h2>
-            <%- include('./partials/footer.ejs')%>
+            <% if (items.length> 0) { %>
+                <% items.forEach(item=> { %>
+                    <div class="cart-item-entity">
+                        <h3 class="cart-item-title">
+                            <%= item.title %>
+                        </h3>
+                        <p class="cart-item-price">
+                            <%= item.price %>
+                        </p>
+                        <p class="cart-item-description">
+                            <%= item.description %>
+                        </p>
+                        <p class="cart-item-weight">
+                            <%= item.weight %>
+                        </p>
+                        <p class="cart-item-image">
+                            <%= item.image %>
+                        </p>
+                    </div>
+                    <% }) %>
+                        <% } else { %>
+                            <p>The shopping cart is empty</p>
+                            <% } %>
+                                <%- include('./partials/footer.ejs')%>
     </body>
 
 </html>
