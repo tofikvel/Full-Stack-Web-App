@@ -20,6 +20,7 @@ app.set('view engine', 'ejs');
 
 // middleware & static files
 app.use(express.static('public'));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
@@ -35,6 +36,14 @@ app.get('/', (req, res) => {
         })
 });
 
+app.post('/', (req, res) => {
+    const products = req.body;
+    Product.insertMany(products)
+        .then(result => res.status(201).send(result))
+        .catch(err => res.status(400).send(err));
+});
+
+// to add product to the cart
 app.post('/cart', (req, res) => {
     const { title, price, description, weight, image } = req.body;
     const CartItem = new Cart({ title, price, description, weight, image });
@@ -60,6 +69,8 @@ app.get('/product', (req, res) => {
     res.render('product', { title: 'Product' });
 });
 
+
+// to display all items in the cart
 app.get('/cart', (req, res) => {
     Cart.find().sort({ createdAt: -1 })
         .then((data) => {

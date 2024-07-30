@@ -7,39 +7,47 @@
             <%- include('./partials/navbar.ejs')%>
                 <div class="wrapper">
                     <div class="content">
-                        <h1>All products</h1>
-                        <% if (products.length> 0) { %>
-                            <% products.forEach(product=> { %>
-                                <div class="product-entity">
-                                    <h3 class="product-title">
-                                        <%= product.title %>
-                                    </h3>
-                                    <p class="product-price">
-                                        <%= product.price %>
-                                    </p>
-                                    <p class="product-description">
-                                        <%= product.description %>
-                                    </p>
-                                    <p class="product-weight">
-                                        <%= product.weight %>
-                                    </p>
-                                    <p class="product-image">
-                                        <%= product.image %>
-                                    </p>
-                                    <form method="POST" action="/cart" style="display: inline;">
-                                        <input type="hidden" name="title" value="<%= product.title %>">
-                                        <input type="hidden" name="price" value="<%= product.price %>">
-                                        <input type="hidden" name="description" value="<%= product.description %>">
-                                        <input type="hidden" name="weight" value="<%= product.weight %>">
-                                        <input type="hidden" name="image" value="<%= product.image %>">
-                                        <button type="submit">Add to cart</button>
-                                    </form>
-                                </div>
+                        <div class="store-product-list">
+                            <% if (products.length> 0) { %>
+                                <% products.forEach(product=> { %>
+                                    <div class="product-entity">
+                                        <div class="product-image-box">
+                                            <img src=<%=product.image %> alt="product-image" class="product-image">
+                                        </div>
+                                        <h3 class="product-title">
+                                            <%= product.title %>
+                                        </h3>
+                                        <p class="product-price">
+                                            <%= product.price %>
+                                        </p>
+                                        <p class="product-description">
+                                            <%= product.description %>
+                                        </p>
+                                        <p class="product-weight">
+                                            <%= product.weight %>
+                                        </p>
+                                        <p class="product-category">
+                                            <%= product.category %>
+                                        </p>
+                                        <p class="product-rating">
+                                            <%= product.rating %>
+                                        </p>
 
-                                <% }) %>
-                                    <% } else { %>
-                                        <p>There are no products to display...</p>
-                                        <% } %>
+                                        <form method="POST" action="/cart" style="display: inline;">
+                                            <input type="hidden" name="title" value="<%= product.title %>">
+                                            <input type="hidden" name="price" value="<%= product.price %>">
+                                            <input type="hidden" name="description" value="<%= product.description %>">
+                                            <input type="hidden" name="weight" value="<%= product.weight %>">
+                                            <input type="hidden" name="image" value="<%= product.image %>">
+                                            <button type="submit">Add to cart</button>
+                                        </form>
+                                    </div>
+
+                                    <% }) %>
+                                        <% } else { %>
+                                            <p>There are no products to display...</p>
+                                            <% } %>
+                        </div>
                     </div>
                 </div>
                 <%- include('./partials/footer.ejs')%>

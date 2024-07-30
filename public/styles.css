@@ -37,13 +37,37 @@ body {
 .content {
     display: flex;
     flex-direction: column;
+    align-items: center;
     border: 1px solid #000;
     width: 95rem;
+    padding: 1.5rem;
+}
+
+.store-product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.product-image-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 275px;
+    width: 100%;
+    border: 1px solid #000;
 }
 
 .product-entity {
-    border: 3px solid #000;
-    margin-bottom: 0.5rem;
+    min-height: 350px;
+    width: 300px;
+    border: 1px solid #000;
+}
+
+.product-image {
+    height: 100%;
+    width: 275px;
 }
 
 .footer {
