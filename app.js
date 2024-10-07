@@ -27,9 +27,13 @@ app.use(morgan('dev'));
 
 // Routes
 app.get('/', (req, res) => {
+    res.redirect('/products');
+})
+
+app.get('/products', (req, res) => {
     Product.find().sort({ createdAt: -1 })
-        .then((data) => {
-            res.render('index', { title: 'All Products', products: data })
+        .then((result) => {
+            res.render('index', { products: result, title: 'All Products' })
         })
         .catch((err) => {
             console.log(err);
@@ -57,6 +61,17 @@ app.post('/cart', (req, res) => {
         });
 });
 
+app.get('/products/:id', (req, res) => {
+    const id = req.params.id;
+    Product.findById(id)
+        .then(result => {
+            res.render('details', { product: result, title: 'Single Item details' })
+        })
+        .catch(err => {
+            console.log(err)
+        })
+})
+
 app.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
 });
@@ -65,24 +80,16 @@ app.get('/contact', (req, res) => {
     res.render('contact', { title: 'Contact' });
 });
 
-app.get('/product', (req, res) => {
-    res.render('product', { title: 'Product' });
-});
-
 
 // to display all items in the cart
 app.get('/cart', (req, res) => {
     Cart.find().sort({ createdAt: -1 })
-        .then((data) => {
-            res.render('cart', { title: 'Shopping Cart', items: data })
+        .then((result) => {
+            res.render('cart', { title: 'Shopping Cart', items: result })
         })
         .catch((err) => {
             console.log(err);
         })
-});
-
-app.get('/comment', (req, res) => {
-    res.render('comment', { title: 'Comment' });
 });
 
 app.use((req, res) => {

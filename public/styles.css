@@ -40,7 +40,7 @@ body {
     align-items: center;
     width: 75rem;
     padding: 1.5rem;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
 }
 
 .store-product-list {
@@ -53,7 +53,6 @@ body {
     min-height: 350px;
     width: 100%;
     max-width: 17em;
-    border: 1px solid #000;
 }
 
 .product-image-box {
@@ -71,11 +70,11 @@ body {
 }
 
 .product-details {
-    border: 1px solid #000;
+    margin: 0.5rem 0 0;
 }
 
 .product-detail-text {
-    border: 1px solid #000;
+    margin: 0;
 }
 
 .product-atc-btn-box {
@@ -88,6 +87,7 @@ body {
     border: none;
     font-size: 1em;
     font-weight: 600;
+    border-radius: 5px;
     background: #fcbf49;
     color: #212529;
 }

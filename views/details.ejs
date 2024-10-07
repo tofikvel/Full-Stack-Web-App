@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- <%- include('./partials/head.ejs')%> -->
+
+<body>
+    <!-- <%- include('./partials/navbar.ejs')%> -->
+    <div class="product-single-detail">
+        <h2>
+            <%= product.title %>
+        </h2>
+        <div class="desc">
+            <p class="price-detail">
+                <%= product.price %>
+            </p>
+            <p class="weight-detail">
+                <%= product.weight %>
+            </p>
+        </div>
+    </div>
+
+    <!-- <%- include('./partials/footer.ejs')%> -->
+</body>
+
+</html>

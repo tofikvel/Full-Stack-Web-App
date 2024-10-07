@@ -10,54 +10,44 @@
                         <div class="store-product-list">
                             <% if (products.length> 0) { %>
                                 <% products.forEach(product=> { %>
-                                    <div class="product-entity">
-                                        <div class="product-image-box">
-                                            <img src=<%=product.image %> alt="product-image" class="product-image">
-                                        </div>
-                                        <div class="product-details">
-                                            <div class="product-detail-text">
-                                                <h3 class="product-title">
+                                    <a class="product-single-item" href="/products/<%= product._id %>">
+                                        <div class="product-entity">
+                                            <div class="product-image-box">
+                                                <img src=<%=product.image %> alt="product-image" class="product-image">
+                                            </div>
+                                            <div class="product-details">
+                                                <h3 class="product-title product-detail-text">
                                                     <%= product.title %>
                                                 </h3>
-                                            </div>
-                                            <div class="product-detail-text">
-                                                <p class="product-price">
+                                                <p class="product-description product-detail-text">
+                                                    <%= product.description %>
+                                                </p>
+                                                <p class="product-weight product-detail-text">
+                                                    <%= product.weight %>
+                                                </p>
+                                                <!-- <p class="product-category product-detail-text">
+                                                    <%= product.category %>
+                                                </p> -->
+                                                <p class="product-rating product-detail-text">
+                                                    <%= product.rating %>
+                                                </p>
+                                                <p class="product-price product-detail-text">
                                                     <%= product.price %>
                                                 </p>
                                             </div>
-                                            <div class="product-detail-text">
-                                                <p class="product-description">
-                                                    <%= product.description %>
-                                                </p>
-                                            </div>
-                                            <div class="product-detail-text">
-                                                <p class="product-weight">
-                                                    <%= product.weight %>
-                                                </p>
-                                            </div>
-                                            <div class="product-detail-text">
-                                                <p class="product-category">
-                                                    <%= product.category %>
-                                                </p>
-                                            </div>
-                                            <div class="product-detail-text">
-                                                <p class="product-rating">
-                                                    <%= product.rating %>
-                                                </p>
+                                            <div class="product-atc-btn-box">
+                                                <form method="POST" action="/cart" style="display: inline;">
+                                                    <input type="hidden" name="title" value="<%= product.title %>">
+                                                    <input type="hidden" name="price" value="<%= product.price %>">
+                                                    <input type="hidden" name="description"
+                                                        value="<%= product.description %>">
+                                                    <input type="hidden" name="weight" value="<%= product.weight %>">
+                                                    <input type="hidden" name="image" value="<%= product.image %>">
+                                                    <button type="submit" class="atc-btn">Add to cart</button>
+                                                </form>
                                             </div>
                                         </div>
-                                        <div class="product-atc-btn-box">
-                                            <form method="POST" action="/cart" style="display: inline;">
-                                                <input type="hidden" name="title" value="<%= product.title %>">
-                                                <input type="hidden" name="price" value="<%= product.price %>">
-                                                <input type="hidden" name="description"
-                                                    value="<%= product.description %>">
-                                                <input type="hidden" name="weight" value="<%= product.weight %>">
-                                                <input type="hidden" name="image" value="<%= product.image %>">
-                                                <button type="submit" class="atc-btn">Add to cart</button>
-                                            </form>
-                                        </div>
-                                    </div>
+                                    </a>
                                     <% }) %>
                                         <% } else { %>
                                             <p>There are no products to display...</p>
