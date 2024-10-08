@@ -33,12 +33,23 @@ app.get('/', (req, res) => {
 app.get('/products', (req, res) => {
     Product.find().sort({ createdAt: -1 })
         .then((result) => {
-            res.render('index', { products: result, title: 'All Products' })
+            res.render('index', { products: result, title: 'All Productz' })
         })
         .catch((err) => {
             console.log(err);
         })
 });
+
+app.get('/products/:id', (req, res) => {
+    const id = req.params.id;
+    Product.findById(id)
+        .then(result => {
+            res.render('details', { product: result, title: 'Single Item details' })
+        })
+        .catch(err => {
+            console.log(err)
+        })
+})
 
 app.post('/', (req, res) => {
     const products = req.body;
@@ -60,17 +71,6 @@ app.post('/cart', (req, res) => {
             console.log(err);
         });
 });
-
-app.get('/products/:id', (req, res) => {
-    const id = req.params.id;
-    Product.findById(id)
-        .then(result => {
-            res.render('details', { product: result, title: 'Single Item details' })
-        })
-        .catch(err => {
-            console.log(err)
-        })
-})
 
 app.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
