@@ -96,7 +96,7 @@ app.delete('/cart/:id', (req, res) => {
     const id = req.params.id;
     Cart.findByIdAndDelete(id)
         .then(result => {
-            res.json({ redirect: '/products' })
+            res.json({ redirect: '/cart' })
         })
         .catch(err => console.log(err));
 })
