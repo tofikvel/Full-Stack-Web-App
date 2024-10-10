@@ -30,7 +30,25 @@
                         <% } else { %>
                             <p>The shopping cart is empty</p>
                             <% } %>
+
                                 <%- include('./partials/footer.ejs')%>
+
+
+                                    <script>
+                                        const trashcan = document.querySelectorAll('a.delete-item-btn');
+                                        trashcan.forEach((trashcan) => {
+                                            trashcan.addEventListener('click', (e) => {
+                                                console.log(trashcan.dataset.doc)
+                                                const endpoint = `/cart/${trashcan.dataset.doc}`;
+                                                fetch(endpoint, {
+                                                    method: 'DELETE'
+                                                })
+                                                    .then((response) => response.json())
+                                                    .then((data) => console.log(data))
+                                                    .catch(err => console.log(err))
+                                            });
+                                        })
+                                    </script>
     </body>
 
 </html>
