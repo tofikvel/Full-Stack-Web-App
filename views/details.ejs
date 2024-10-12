@@ -3,18 +3,31 @@
 <%- include('./partials/head.ejs')%>
 
     <body>
+
+
         <%- include('./partials/navbar.ejs')%>
-            <div class="product-single-detail">
-                <h2>
-                    <%= product.title %>
-                </h2>
-                <div class="desc">
-                    <p class="price-detail">
-                        <%= product.price %>
-                    </p>
-                    <p class="weight-detail">
-                        <%= product.weight %>
-                    </p>
+            <div class="product-single-item-wrapper wrapper">
+                <div class="product-single-item-content content">
+                    <div class="product-single-item-box">
+                        <div class="product-single-item-image-box">
+                            <img src=<%=product.image %> alt="product-image" class="product-single-item-image">
+                        </div>
+                        <div class="product-single-item-body">
+                            <div class="product-single-item-title">
+                                <h2>
+                                    <%= product.title %>
+                                </h2>
+                            </div>
+                            <div class="product-single-item-desc">
+                                <p class="price-detail">
+                                    <%= product.price %>
+                                </p>
+                                <p class="weight-detail">
+                                    <%= product.weight %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
