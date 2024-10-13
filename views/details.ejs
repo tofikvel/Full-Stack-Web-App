@@ -6,25 +6,53 @@
 
 
         <%- include('./partials/navbar.ejs')%>
-            <div class="product-single-item-wrapper wrapper">
-                <div class="product-single-item-content content">
-                    <div class="product-single-item-box">
+            <div class="product-single-item-wrapper">
+                <div class="product-single-item-box">
+                    <div class="product-single-item-item">
                         <div class="product-single-item-image-box">
                             <img src=<%=product.image %> alt="product-image" class="product-single-item-image">
                         </div>
                         <div class="product-single-item-body">
-                            <div class="product-single-item-title">
-                                <h2>
-                                    <%= product.title %>
-                                </h2>
-                            </div>
                             <div class="product-single-item-desc">
-                                <p class="price-detail">
+                                <div class="product-single-item-title">
+                                    <h2>
+                                        <%= product.title %>
+                                    </h2>
+                                </div>
+                                <p class="product-single-item-desc">
+                                    <%= product.description %>
+                                </p>
+                                <p class="product-single-item-price">
                                     <%= product.price %>
                                 </p>
-                                <p class="weight-detail">
+                                <p class="product-single-item-category">
+                                    <%= product.category %>
+                                </p>
+                                <p class="product-single-item-rating">
+                                    <%= product.rating %>
+                                </p>
+                                <p class="product-single-item-weight">
                                     <%= product.weight %>
                                 </p>
+                            </div>
+                            <div class="product-single-item-footer">
+                                <select name="quantity" id="product-single-item-quantity">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <div class="product-single-item-atc-btn-box">
+                                    <form method="POST" action="/cart" style="display: inline;">
+                                        <input type="hidden" name="title" value="<%= product.title %>">
+                                        <input type="hidden" name="price" value="<%= product.price %>">
+                                        <input type="hidden" name="description" value="<%= product.description %>">
+                                        <input type="hidden" name="weight" value="<%= product.weight %>">
+                                        <input type="hidden" name="image" value="<%= product.image %>">
+                                        <button type="submit" class="atc-btn">Add to cart</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
