@@ -31,8 +31,8 @@
                                 <p class="product-single-item-weight item-details">
                                     <%= product.weight %>
                                 </p>
-                                <div class="product-single-item-size-promo">
-                                    <select name="size" id="product-single-item-size">
+                                <div class="product-single-item-size">
+                                    <select name="size" class="product-single-item-size">
                                         <option value="1">small</option>
                                         <option value="2">medium</option>
                                         <option value="3">large</option>
@@ -41,30 +41,23 @@
                                 </div>
                             </div>
                             <div class="product-single-item-footer">
-                                <div class="product-single-item-footer-left">
-                                    <select name="quantity" id="product-single-item-quantity">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                    <div class="product-single-item-promo-box">
-                                        <input type="text" class="single-product-item-promo" placeholder="Promo code">
-                                        <button class="product-single-item-promo-btn">Apply</button>
-                                    </div>
-                                </div>
-                                <div class="product-single-item-footer-right">
-                                    <div class="product-single-item-atc-btn-box">
-                                        <form method="POST" action="/cart" style="display: inline;">
-                                            <input type="hidden" name="title" value="<%= product.title %>">
-                                            <input type="hidden" name="price" value="<%= product.price %>">
-                                            <input type="hidden" name="description" value="<%= product.description %>">
-                                            <input type="hidden" name="weight" value="<%= product.weight %>">
-                                            <input type="hidden" name="image" value="<%= product.image %>">
-                                            <button type="submit" class="atc-btn">Add to cart</button>
-                                        </form>
-                                    </div>
+                                <select name="quantity" class="product-single-item-quantity">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <div class="product-single-item-atc-btn-box">
+                                    <form method="POST" action="/cart" style="display: inline;">
+                                        <input type="hidden" name="title" value="<%= product.title %>">
+                                        <input type="hidden" name="price" value="<%= product.price %>">
+                                        <input type="hidden" name="description" value="<%= product.description %>">
+                                        <input type="hidden" name="weight" value="<%= product.weight %>">
+                                        <input type="hidden" name="image" value="<%= product.image %>">
+                                        <button type="submit" class="product-single-item-atc-btn atc-btn">ADD TO
+                                            CART</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
