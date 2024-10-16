@@ -5,50 +5,48 @@
 
     <body>
         <%- include('./partials/navbar.ejs')%>
-            <h1>Shopping cart page</h1>
-            <% if (items.length> 0) { %>
-                <% items.forEach(item=> { %>
-                    <div class="cart-item-entity">
-                        <h3 class="cart-item-title">
-                            <%= item.title %>
-                        </h3>
-                        <p class="cart-item-price">
-                            <%= item.price %>
-                        </p>
-                        <p class="cart-item-description">
-                            <%= item.description %>
-                        </p>
-                        <p class="cart-item-weight">
-                            <%= item.weight %>
-                        </p>
-                        <p class="cart-item-image">
-                            <%= item.image %>
-                        </p>
-                        <a class="delete-item-btn" data-doc="<%= item._id %>">delete</a>
-                    </div>
-                    <% }) %>
-                        <% } else { %>
-                            <p>The shopping cart is empty</p>
-                            <% } %>
-
-                                <%- include('./partials/footer.ejs')%>
-
-
-                                    <script>
-                                        const trashcan = document.querySelectorAll('a.delete-item-btn');
-                                        trashcan.forEach((trashcan) => {
-                                            trashcan.addEventListener('click', (e) => {
-                                                console.log(trashcan.dataset.doc)
-                                                const endpoint = `/cart/${trashcan.dataset.doc}`;
-                                                fetch(endpoint, {
-                                                    method: 'DELETE'
-                                                })
-                                                    .then((response) => response.json())
-                                                    .then((data) => window.location.href = data.redirect)
-                                                    .catch(err => console.log(err))
-                                            });
-                                        })
-                                    </script>
+            <div class="shopping-cart-wrapper">
+                <% if (items.length> 0) { %>
+                    <% items.forEach(item=> { %>
+                        <div class="cart-item-entity">
+                            <h3 class="cart-item-title">
+                                <%= item.title %>
+                            </h3>
+                            <p class="cart-item-price">
+                                <%= item.price %>
+                            </p>
+                            <p class="cart-item-description">
+                                <%= item.description %>
+                            </p>
+                            <p class="cart-item-weight">
+                                <%= item.weight %>
+                            </p>
+                            <p class="cart-item-image">
+                                <%= item.image %>
+                            </p>
+                            <a class="delete-item-btn" data-doc="<%= item._id %>">delete</a>
+                        </div>
+                        <% }) %>
+                            <% } else { %>
+                                <p>The shopping cart is empty</p>
+                                <% } %>
+                                    <%- include('./partials/footer.ejs')%>
+            </div>
+            <script>
+                const trashcan = document.querySelectorAll('a.delete-item-btn');
+                trashcan.forEach((trashcan) => {
+                    trashcan.addEventListener('click', (e) => {
+                        console.log(trashcan.dataset.doc)
+                        const endpoint = `/cart/${trashcan.dataset.doc}`;
+                        fetch(endpoint, {
+                            method: 'DELETE'
+                        })
+                            .then((response) => response.json())
+                            .then((data) => window.location.href = data.redirect)
+                            .catch(err => console.log(err))
+                    });
+                })
+            </script>
     </body>
 
 </html>
