@@ -14,50 +14,72 @@
                                 <img src=<%=product.image %> alt="product-image" class="product-single-item-main-image">
                             </div>
                         </div>
-                        <div class="product-single-item-body">
-                            <div class="product-single-item-desc">
-                                <p class="product-single-item-title item-details">
-                                    <%= product.title %>
-                                </p>
-                                <p class="product-single-item-price item-details">
-                                    <%= product.price %>
-                                </p>
-                                <p class="product-single-item-rating item-details">
-                                    <%= product.rating %>
-                                </p>
-                                <p class="product-single-item-desc item-details">
+                        <div class="product-single-item-desc-body">
+                            <h2 class="product-single-item-title">
+                                <%= product.title %>
+                            </h2>
+                            <h1 class="product-single-item-price">
+                                <%= product.price %>
+                            </h1>
+                            <p class="product-single-item-rating">
+                                <%= product.rating %>
+                            </p>
+                            <div class="product-single-item-ingredients-box">
+                                <p class="product-single-item-label">Main ingredients:</p>
+                                <p class="product-single-item-ingredients">
                                     <%= product.description %>
                                 </p>
-                                <p class="product-single-item-weight item-details">
-                                    <%= product.weight %>
-                                </p>
-                                <div class="product-single-item-size">
-                                    <select name="size" class="product-single-item-size">
-                                        <option value="1">small</option>
-                                        <option value="2">medium</option>
-                                        <option value="3">large</option>
-                                        <option value="4">XXL</option>
-                                    </select>
+                            </div>
+                            <p class="product-single-item-weight">
+                                <%= product.weight %>
+                            </p>
+                            <div class="product-single-item-size">
+                                <p class="product-single-item-size-label">Size:</p>
+                                <div class="product-single-item-size-radio-box">
+                                    <input type="radio" value="small" name="size" id="small">
+                                    <label for="small">small - 25.5 cm</label>
+                                    <input type="radio" value="medium" name="size" id="medium" checked>
+                                    <label for="medium">medium - 30.5 cm</label>
+                                    <input type="radio" value="large" name="size" id="large">
+                                    <label for="large">large - 35.5 cm</label>
+                                    <input type="radio" value="xxl" name="size" id="xxl">
+                                    <label for="xxl">xxl - 46 cm</label>
+                                </div>
+                            </div>
+                            <div class="product-single-item-thickness">
+                                <p class="product-single-item-thickness-label">Thickness:</p>
+                                <div class="product-single-item-thickness-radio-box">
+                                    <input type="radio" value="thin" name="thickness" id="thin" checked>
+                                    <label for="thin">thin</label>
+                                    <input type="radio" value="thick" name="thickness" id="thick">
+                                    <label for="thin">thick</label>
                                 </div>
                             </div>
                             <div class="product-single-item-footer">
-                                <select name="quantity" class="product-single-item-quantity">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                                <div class="product-single-item-atc-btn-box">
-                                    <form method="POST" action="/cart" style="display: inline;">
-                                        <input type="hidden" name="title" value="<%= product.title %>">
-                                        <input type="hidden" name="price" value="<%= product.price %>">
-                                        <input type="hidden" name="description" value="<%= product.description %>">
-                                        <input type="hidden" name="weight" value="<%= product.weight %>">
-                                        <input type="hidden" name="image" value="<%= product.image %>">
-                                        <button type="submit" class="product-single-item-atc-btn atc-btn">ADD TO
-                                            CART</button>
-                                    </form>
+                                <div class="product-single-item-footer-size-atc-btn-box">
+                                    <select name="quantity" class="product-single-item-quantity">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    <div class="product-single-item-atc-btn-box">
+                                        <button class="product-single-item-atw-btn">ATW</button>
+                                        <form method="POST" action="/cart" style="display: inline;">
+                                            <input type="hidden" name="title" value="<%= product.title %>">
+                                            <input type="hidden" name="price" value="<%= product.price %>">
+                                            <input type="hidden" name="description" value="<%= product.description %>">
+                                            <input type="hidden" name="weight" value="<%= product.weight %>">
+                                            <input type="hidden" name="image" value="<%= product.image %>">
+                                            <button type="submit" class="product-single-item-atc-btn">ADD TO
+                                                CART</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="product-single-item-additional-btn-box">
+
+                                    <button class="product-single-item-share-btn">Share</button>
                                 </div>
                             </div>
                         </div>
