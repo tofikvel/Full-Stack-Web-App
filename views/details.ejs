@@ -55,6 +55,27 @@
                                     <label for="thin">thick</label>
                                 </div>
                             </div>
+                            <div class="product-single-item-base-sauce">
+                                <p class="product-single-item-sauce-label">Base sauce:</p>
+                                <input type="radio" value="BBQ" name="sauce" id="bbq" checked>
+                                <label for="bbq">BBQ</label>
+                                <input type="radio" value="Tomato" name="sauce" id="tomato" checked>
+                                <label for="bbq">Tomato</label>
+                                <input type="radio" value="Marinara" name="sauce" id="marinara">
+                                <label for="bbq">Marinara</label>
+                            </div>
+                            <div class="product-single-item-add-ingredients">
+                                <div class="product-single-item-add-ingredients-title">
+                                    <p>Choose extra ingredients:</p>
+                                </div>
+                                <div class="product-single-item-add-ingredients-list">
+                                    <div class="product-single-item-add-ingredient-btn-box">
+                                        <p class="product-single-item-add-ingredient-btn-label">Extra cheese</p>
+                                        <button class="product-single-item-add-ingredient-btn"
+                                            onclick="toggleIcon(this)">+</button>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="product-single-item-footer">
                                 <div class="product-single-item-footer-size-atc-btn-box">
                                     <select name="quantity" class="product-single-item-quantity">
@@ -65,7 +86,6 @@
                                         <option value="5">5</option>
                                     </select>
                                     <div class="product-single-item-atc-btn-box">
-                                        <button class="product-single-item-atw-btn">ATW</button>
                                         <form method="POST" action="/cart" style="display: inline;">
                                             <input type="hidden" name="title" value="<%= product.title %>">
                                             <input type="hidden" name="price" value="<%= product.price %>">
@@ -84,6 +104,15 @@
             </div>
 
             <%- include('./partials/footer.ejs')%>
+                <script>
+                    function toggleIcon(button) {
+                        if (button.innerHTML === "+") {
+                            button.innerHTML = "−";
+                        } else {
+                            button.innerHTML = "+";
+                        }
+                    }
+                </script>
     </body>
 
 </html>

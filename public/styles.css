@@ -204,6 +204,24 @@ a {
     margin-right: 1rem;
 }
 
+.product-single-item-add-ingredient-btn-box {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #000;
+}
+
+.product-single-item-add-ingredient-btn {
+    padding: 0.5rem;
+    cursor: pointer;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: #f7b801;
+    color: #000;
+    height: auto;
+    width: 3.5rem;
+}
+
 .product-single-item-atc-btn-box {
     display: flex;
     align-items: center;
