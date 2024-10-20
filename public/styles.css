@@ -28,17 +28,31 @@ a {
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    position: fixed;
+    top: 0;
     height: 6.5rem;
-    padding: 0 1.5rem 0 1.5rem;
-    background: #041C32;
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+    background: #bc4749;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 70rem;
+    width: 70rem;
 }
 
 .nav-link {
     text-decoration: none;
-    margin-right: 1rem;
     font-size: 1.3em;
-    color: white;
+    color: #ffffff;
+}
+
+.nav-link-right {
+    margin-left: 1rem;
 }
 
 .wrapper {
@@ -47,20 +61,20 @@ a {
     flex-grow: 1;
     min-height: 100vh;
     margin: 0 auto;
+    padding: 10rem 0 5rem 0;
 }
 
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 75rem;
-    padding: 1.5rem;
+    width: 70rem;
 }
 
 .store-product-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
+    gap: 0.5rem;
 }
 
 .product-entity {
@@ -176,16 +190,17 @@ a {
 }
 
 .product-single-item-size,
-.product-single-item-thickness {
+.product-single-item-thickness,
+.product-single-item-base-sauce {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     width: 100%;
 }
 
-.product-single-item-thickness {
+/* .product-single-item-base-sauce {
     margin-bottom: 1rem;
-}
+} */
 
 .product-single-item-footer {
     display: flex;
@@ -202,24 +217,6 @@ a {
     height: 3rem;
     width: 4.5rem;
     margin-right: 1rem;
-}
-
-.product-single-item-add-ingredient-btn-box {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #000;
-}
-
-.product-single-item-add-ingredient-btn {
-    padding: 0.5rem;
-    cursor: pointer;
-    border: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    background: #f7b801;
-    color: #000;
-    height: auto;
-    width: 3.5rem;
 }
 
 .product-single-item-atc-btn-box {
