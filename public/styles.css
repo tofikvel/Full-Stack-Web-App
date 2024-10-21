@@ -137,7 +137,7 @@ a {
 .product-single-item-box {
     max-width: 75rem;
     width: 100%;
-    padding-top: 3.5rem;
+    padding-top: 14rem;
     height: auto;
     background: #ffffff;
 }
@@ -181,7 +181,6 @@ a {
     height: 100%;
     width: 100%;
     flex-basis: 55%;
-    /* border: 1px solid #000; */
 }
 
 .product-single-item-ingredients-box {
@@ -197,10 +196,6 @@ a {
     gap: 0.5rem;
     width: 100%;
 }
-
-/* .product-single-item-base-sauce {
-    margin-bottom: 1rem;
-} */
 
 .product-single-item-footer {
     display: flex;
@@ -257,8 +252,28 @@ a {
 
 /* cart */
 
+.shopping-cart-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+.shopping-cart-inner-box {
+    display: flex;
+    justify-content: space-between;
+    max-width: 75rem;
+    width: 100%;
+    padding-top: 10rem;
+    height: auto;
+    background: #ffffff;
+}
+
 .cart-item-entity {
     position: relative;
+    max-width: 45rem;
+    width: 45rem;
     margin-bottom: 1rem;
     border: 1px solid #000;
 }
@@ -274,6 +289,14 @@ a {
 .delete-item-btn:hover {
     cursor: pointer;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.shopping-cart-checkout-box {
+    display: flex;
+    flex-direction: column;
+    height: 55rem;
+    width: 25rem;
+    border: 3px solid #000;
 }
 
 /* cart */
